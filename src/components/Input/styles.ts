@@ -15,6 +15,17 @@ export const Container = styled.div`
     margin-top: 0.8rem;
   }
 
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #232129 inset !important;
+  }
+
+  input:-webkit-autofill {
+    -webkit-text-fill-color: #f4ede8 !important;
+  }
+
   input {
     flex: 1;
     color: #f4ede8;
