@@ -3,6 +3,8 @@ import React, {
   ComponentType,
   useEffect,
   useRef,
+  useState,
+  useCallback,
 } from 'react';
 import { useField } from '@unform/core';
 import { IconBaseProps } from 'react-icons';
@@ -15,8 +17,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
-  const inputRef = useRef(null);
-  const { fieldName, defaultValue, error, registerField } = useField(name);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const { fieldName, defaultValue, registerField } = useField(name);
+
+  const [isFilled, setIsFilled] = useState(false);
 
   useEffect(() => {
     registerField({
@@ -26,10 +30,19 @@ const Input: React.FC<InputProps> = ({ name, icon: Icon, ...rest }) => {
     });
   }, [fieldName, registerField]);
 
+  const handleInputBlur = useCallback(() => {
+    setIsFilled(!!inputRef.current?.value.trim());
+  }, []);
+
   return (
-    <Container>
+    <Container isFilled={isFilled}>
       {Icon && <Icon size={20} />}
-      <input defaultValue={defaultValue} ref={inputRef} {...rest} />
+      <input
+        defaultValue={defaultValue}
+        ref={inputRef}
+        onBlur={handleInputBlur}
+        {...rest}
+      />
     </Container>
   );
 };

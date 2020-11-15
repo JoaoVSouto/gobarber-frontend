@@ -1,15 +1,31 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps {
+  isFilled?: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
   background-color: #232129;
   border-radius: 1rem;
   border: 2px solid #232129;
   padding: 1.6rem;
   width: 100%;
   color: #666360;
+  transition: border-color 200ms;
 
   display: flex;
   align-items: center;
+
+  ${({ isFilled }) =>
+    isFilled &&
+    css`
+      color: #ff9000;
+    `}
+
+  &:focus-within {
+    color: #ff9000;
+    border-color: #ff9000;
+  }
 
   + div {
     margin-top: 0.8rem;
@@ -38,6 +54,7 @@ export const Container = styled.div`
   }
 
   svg {
+    transition: color 200ms;
     margin-right: 1.6rem;
   }
 `;
