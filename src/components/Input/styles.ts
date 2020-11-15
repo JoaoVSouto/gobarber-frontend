@@ -1,7 +1,10 @@
 import styled, { css } from 'styled-components';
 
+import Tooltip from '../Tooltip';
+
 interface ContainerProps {
   isFilled?: boolean;
+  isErrored?: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -20,6 +23,12 @@ export const Container = styled.div<ContainerProps>`
     isFilled &&
     css`
       color: #ff9000;
+    `}
+
+  ${({ isErrored }) =>
+    isErrored &&
+    css`
+      border-color: #c53030;
     `}
 
   &:focus-within {
@@ -56,5 +65,24 @@ export const Container = styled.div<ContainerProps>`
   svg {
     transition: color 200ms;
     margin-right: 1.6rem;
+  }
+`;
+
+export const Error = styled(Tooltip)`
+  height: 2rem;
+  margin-left: 1.6rem;
+  cursor: help;
+
+  svg {
+    margin: 0;
+  }
+
+  span {
+    background-color: #c53030;
+    color: #fff;
+
+    &::after {
+      border-color: #c53030 transparent;
+    }
   }
 `;
