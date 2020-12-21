@@ -1,5 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+`;
 
 export const Container = styled.button`
   font-weight: 500;
@@ -11,6 +21,15 @@ export const Container = styled.button`
   width: 100%;
   margin-top: 2.4rem;
   transition: background-color 200ms;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin-right: 0.8rem;
+    animation: ${spin} 2s infinite linear;
+  }
 
   &:hover,
   &:focus {
