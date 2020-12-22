@@ -1,13 +1,16 @@
 import React, { useCallback, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
+import qs from 'qs';
 import { FiLock } from 'react-icons/fi';
 
 import { useToast } from '../../hooks/toast';
 
 import getValidationErrors from '../../utils/getValidationErrors';
+
+import api from '../../services/api';
 
 import logoImg from '../../assets/logo.svg';
 
@@ -24,6 +27,7 @@ const ResetPassword: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const history = useHistory();
+  const location = useLocation();
 
   const { addToast } = useToast();
 
@@ -45,9 +49,27 @@ const ResetPassword: React.FC = () => {
 
         await schema.validate(data, { abortEarly: false });
 
-        // const { password } = data;
+        const { password, password_confirmation } = data;
 
-        history.push('/signin');
+        const queryParams = location.search.replaceAll('?', '');
+        const { token } = qs.parse(queryParams);
+
+        if (!token) {
+          throw new Error('Token is not present.');
+        }
+
+        await api.post('/password/reset', {
+          password,
+          password_confirmation,
+          token,
+        });
+
+        addToast({
+          type: 'success',
+          title: 'Senha resetada com sucesso!',
+        });
+
+        history.push('/');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -64,7 +86,7 @@ const ResetPassword: React.FC = () => {
         });
       }
     },
-    [history, addToast],
+    [history, addToast, location.search],
   );
 
   return (
