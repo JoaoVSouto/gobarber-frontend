@@ -3,14 +3,13 @@ import { FiClock, FiPower } from 'react-icons/fi';
 
 import { useAuth } from '../../hooks/auth';
 
-import getUserInitials from '../../utils/getUserInitials';
+import UserImage from '../../components/UserImage';
 
 import {
   Container,
   Header,
   HeaderContent,
   Profile,
-  ProfileImagePlaceholder,
   Content,
   Schedule,
   NextAppointment,
@@ -33,13 +32,7 @@ const Dashboard: React.FC = () => {
           <img src={logoImg} alt="GoBarber" />
 
           <Profile>
-            {user.avatar_url ? (
-              <img src={user.avatar_url} alt={user.name} />
-            ) : (
-              <ProfileImagePlaceholder>
-                {getUserInitials(user.name)}
-              </ProfileImagePlaceholder>
-            )}
+            <UserImage url={user.avatar_url} alt={user.name} />
 
             <div>
               <span>Bem vindo,</span>
@@ -65,9 +58,10 @@ const Dashboard: React.FC = () => {
           <NextAppointment>
             <strong>Atendimento a seguir</strong>
             <div>
-              <img
-                src="https://avatars1.githubusercontent.com/u/42191629?v=4"
+              <UserImage
+                url="https://avatars1.githubusercontent.com/u/42191629?v=4"
                 alt="João Vítor"
+                width={8}
               />
 
               <strong>João Vítor</strong>
@@ -88,10 +82,7 @@ const Dashboard: React.FC = () => {
               </span>
 
               <div>
-                <img
-                  src="https://avatars1.githubusercontent.com/u/42191629?v=4"
-                  alt="João Vítor"
-                />
+                <UserImage alt="João Vítor" />
 
                 <strong>João Vítor</strong>
               </div>
@@ -103,10 +94,7 @@ const Dashboard: React.FC = () => {
               </span>
 
               <div>
-                <img
-                  src="https://avatars1.githubusercontent.com/u/42191629?v=4"
-                  alt="João Vítor"
-                />
+                <UserImage alt="João Vítor" />
 
                 <strong>João Vítor</strong>
               </div>
@@ -123,8 +111,8 @@ const Dashboard: React.FC = () => {
               </span>
 
               <div>
-                <img
-                  src="https://avatars1.githubusercontent.com/u/42191629?v=4"
+                <UserImage
+                  url="https://avatars1.githubusercontent.com/u/42191629?v=4"
                   alt="João Vítor"
                 />
 

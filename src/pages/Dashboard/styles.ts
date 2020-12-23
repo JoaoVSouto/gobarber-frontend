@@ -33,13 +33,6 @@ export const Profile = styled.div`
   align-items: center;
   margin-left: 8rem;
 
-  img {
-    width: 5.6rem;
-    height: 5.6rem;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
   div {
     display: flex;
     flex-direction: column;
@@ -54,18 +47,6 @@ export const Profile = styled.div`
       color: #ff9000;
     }
   }
-`;
-
-export const ProfileImagePlaceholder = styled.span`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  font-size: 2.4rem;
-  width: 5.6rem;
-  height: 5.6rem;
-  border-radius: 50%;
-  background-color: #312e38;
 `;
 
 export const Content = styled.main`
@@ -124,13 +105,6 @@ export const NextAppointment = styled.div`
       left: 0;
       top: 50%;
       transform: translateY(-50%);
-    }
-
-    img {
-      height: 8rem;
-      width: 8rem;
-      border-radius: 50%;
-      object-fit: cover;
     }
 
     strong {
@@ -194,13 +168,6 @@ export const Appointment = styled.div`
     display: flex;
     align-items: center;
     margin-left: 1.6rem;
-
-    img {
-      width: 5.6rem;
-      height: 5.6rem;
-      border-radius: 50%;
-      object-fit: cover;
-    }
 
     strong {
       margin-left: 1.6rem;
