@@ -8,7 +8,7 @@ import { Container, Header, HeaderContent, Profile } from './styles';
 import logoImg from '../../assets/logo.svg';
 
 const Dashboard: React.FC = () => {
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
 
   return (
     <Container>
@@ -17,14 +17,11 @@ const Dashboard: React.FC = () => {
           <img src={logoImg} alt="GoBarber" />
 
           <Profile>
-            <img
-              src="https://avatars1.githubusercontent.com/u/42191629?v=4"
-              alt="João Vítor"
-            />
+            <img src={user.avatar_url} alt={user.name} />
 
             <div>
               <span>Bem vindo,</span>
-              <strong>João Vítor</strong>
+              <strong>{user.name}</strong>
             </div>
           </Profile>
 
