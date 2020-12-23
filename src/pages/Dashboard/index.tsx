@@ -1,11 +1,15 @@
 import React from 'react';
 import { FiPower } from 'react-icons/fi';
 
+import { useAuth } from '../../hooks/auth';
+
 import { Container, Header, HeaderContent, Profile } from './styles';
 
 import logoImg from '../../assets/logo.svg';
 
 const Dashboard: React.FC = () => {
+  const { signOut } = useAuth();
+
   return (
     <Container>
       <Header>
@@ -24,7 +28,7 @@ const Dashboard: React.FC = () => {
             </div>
           </Profile>
 
-          <button type="button">
+          <button type="button" title="Sair do GoBarber" onClick={signOut}>
             <FiPower size={20} />
           </button>
         </HeaderContent>
