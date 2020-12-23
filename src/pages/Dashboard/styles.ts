@@ -55,3 +55,15 @@ export const Profile = styled.div`
     }
   }
 `;
+
+export const ProfileImagePlaceholder = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2.4rem;
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 50%;
+  background-color: #312e38;
+`;

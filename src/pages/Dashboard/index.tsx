@@ -3,7 +3,15 @@ import { FiPower } from 'react-icons/fi';
 
 import { useAuth } from '../../hooks/auth';
 
-import { Container, Header, HeaderContent, Profile } from './styles';
+import getUserInitials from '../../utils/getUserInitials';
+
+import {
+  Container,
+  Header,
+  HeaderContent,
+  Profile,
+  ProfileImagePlaceholder,
+} from './styles';
 
 import logoImg from '../../assets/logo.svg';
 
@@ -17,7 +25,13 @@ const Dashboard: React.FC = () => {
           <img src={logoImg} alt="GoBarber" />
 
           <Profile>
-            <img src={user.avatar_url} alt={user.name} />
+            {user.avatar_url ? (
+              <img src={user.avatar_url} alt={user.name} />
+            ) : (
+              <ProfileImagePlaceholder>
+                {getUserInitials(user.name)}
+              </ProfileImagePlaceholder>
+            )}
 
             <div>
               <span>Bem vindo,</span>
