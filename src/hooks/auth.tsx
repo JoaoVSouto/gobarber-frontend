@@ -1,4 +1,5 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
+import { decode } from 'jsonwebtoken';
 
 import api from '../services/api';
 
@@ -24,6 +25,10 @@ interface AuthContextData {
   signOut(): void;
 }
 
+interface TokenData {
+  exp: number;
+}
+
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
@@ -32,6 +37,12 @@ export const AuthProvider: React.FC = ({ children }) => {
     const user = localStorage.getItem('@GoBarber:user');
 
     if (token && user) {
+      const { exp } = decode(token) as TokenData;
+
+      if (new Date().getTime() / 1000 > exp) {
+        return {} as AuthState;
+      }
+
       return { token, user: JSON.parse(user) };
     }
 
