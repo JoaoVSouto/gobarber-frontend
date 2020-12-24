@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
+
+import ArrowLeftIcon from '../../assets/ArrowLeftIcon.svg';
+import ArrowRightIcon from '../../assets/ArrowRightIcon.svg';
 
 export const Container = styled.div``;
 
@@ -178,4 +182,94 @@ export const Appointment = styled.div`
 
 export const Calendar = styled.aside`
   width: 38rem;
+
+  .DayPicker {
+    border-radius: 10px;
+    font-size: 1.6rem;
+  }
+
+  .DayPicker-wrapper {
+    padding-bottom: 0;
+    background: #3e3b47;
+    border-radius: 10px;
+  }
+
+  .DayPicker,
+  .DayPicker-Month {
+    width: 100%;
+  }
+
+  .DayPicker-NavButton {
+    color: #999591 !important;
+  }
+
+  .DayPicker-NavButton--prev {
+    background: url(${ArrowLeftIcon}) no-repeat center;
+    right: auto;
+    left: 1.5em;
+    top: 11px;
+    margin: 0;
+  }
+
+  .DayPicker-NavButton--next {
+    background: url(${ArrowRightIcon}) no-repeat center;
+    margin: 0;
+    top: 11px;
+  }
+
+  .DayPicker-Month {
+    border-collapse: separate;
+    border-spacing: 8px;
+    margin: 1rem 0 0 0;
+    padding: 1.6rem;
+    background-color: #28262e;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .DayPicker-Caption {
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    color: #f4ede8;
+
+    > div {
+      text-align: center;
+      font-size: 1.6rem;
+    }
+  }
+
+  .DayPicker-Weekday {
+    color: #666360;
+    font-size: 1.6rem;
+  }
+
+  .DayPicker-Day {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .DayPicker-Day--available:not(.DayPicker-Day--outside) {
+    background: #3e3b47;
+    border-radius: 10px;
+  }
+
+  .DayPicker:not(.DayPicker--interactionDisabled)
+    .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+    background: ${shade(0.2, '#3e3b47')};
+  }
+
+  .DayPicker-Day--today {
+    font-weight: normal;
+    color: #fff;
+  }
+
+  .DayPicker-Day--disabled {
+    color: #666360;
+    background: transparent !important;
+  }
+
+  .DayPicker-Day--selected {
+    background: #ff9000 !important;
+    border-radius: 10px;
+    color: #232129 !important;
+  }
 `;
