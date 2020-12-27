@@ -26,8 +26,17 @@ export const HeaderContent = styled.div`
     background-color: transparent;
     border: 0;
 
+    &:hover,
+    &:focus {
+      svg {
+        color: #ff9000;
+        filter: drop-shadow(0 0 2px #ff9000);
+      }
+    }
+
     svg {
       color: #999591;
+      transition: all 0.2s;
     }
   }
 `;
