@@ -56,8 +56,18 @@ export const Profile = styled.div`
       color: #f4ede8;
     }
 
-    strong {
+    a {
       color: #ff9000;
+      transition: color 200ms;
+
+      &:hover,
+      &:focus {
+        color: ${shade(0.2, '#ff9000')};
+      }
+
+      &:active {
+        color: ${shade(0.3, '#ff9000')};
+      }
     }
   }
 `;
