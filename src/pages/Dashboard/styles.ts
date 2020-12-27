@@ -67,7 +67,7 @@ export const Schedule = styled.div`
     font-size: 3.6rem;
   }
 
-  p {
+  > p {
     margin-top: 0.8rem;
     color: #ff9000;
     font-weight: 500;
@@ -133,6 +133,13 @@ export const NextAppointment = styled.div`
 
 export const Section = styled.section`
   margin-top: 4.8rem;
+
+  p {
+    text-align: center;
+    font-size: 2.4rem;
+    color: #999591;
+    opacity: 0.8;
+  }
 
   > strong {
     display: block;
