@@ -65,7 +65,8 @@ export const AvatarInput = styled.div`
   margin-bottom: 3.2rem;
   position: relative;
 
-  button {
+  label {
+    cursor: pointer;
     position: absolute;
     bottom: 0;
     right: calc(50% - 9.3rem + 3rem);
@@ -82,7 +83,8 @@ export const AvatarInput = styled.div`
     justify-content: center;
 
     &:hover,
-    &:focus {
+    &:focus,
+    &:focus-within {
       background-color: ${shade(0.2, '#ff9000')};
     }
 
@@ -92,6 +94,12 @@ export const AvatarInput = styled.div`
 
     svg {
       color: #312e38;
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
     }
   }
 `;
