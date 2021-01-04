@@ -48,6 +48,14 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/pages/**/*.tsx",
+      "src/components/**/*.tsx",
+      "src/hooks/*.tsx",
+      "!src/hooks/index.tsx"
+    ]
+  },
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.0",
     "@types/qs": "^6.9.5",
