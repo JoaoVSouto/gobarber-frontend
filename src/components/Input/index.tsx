@@ -41,7 +41,12 @@ const Input: React.FC<InputProps> = ({
   }, []);
 
   return (
-    <Container className={className} isErrored={!!error} isFilled={isFilled}>
+    <Container
+      className={className}
+      isErrored={!!error}
+      isFilled={isFilled}
+      data-testid="input-container"
+    >
       {Icon && <Icon size={20} />}
       <input
         defaultValue={defaultValue}
